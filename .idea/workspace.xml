@@ -14,6 +14,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1Zm9zFXZzSlFOoTAYVGDcZsukwo" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,7 +40,7 @@
       <recent name="C:\Users\jetth\Desktop\OpenCVExamples\venv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Hough_Line_Transform_OpenCV_Python">
+  <component name="RunManager" selected="Python.opencv_python_object_detection">
     <configuration name="Hough_Line_Transform_OpenCV_Python" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="OpenCVExamples" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,6 +146,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.opencv_python_object_detection" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -170,30 +178,30 @@
       <screen x="-349" y="-2160" width="2560" height="1400" />
     </state>
     <state x="569" y="-1715" key="FileChooserDialogImpl/0.0.1707.920/-349.-2160.2560.1400@-349.-2160.2560.1400" timestamp="1585436312682" />
-    <state width="82" height="792" key="GridCell.Tab.0.bottom" timestamp="1585871122654">
+    <state width="561" height="793" key="GridCell.Tab.0.bottom" timestamp="1586062098261">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="863" height="1273" key="GridCell.Tab.0.bottom/0.0.1707.920/-349.-2160.2560.1400@-349.-2160.2560.1400" timestamp="1585862762843" />
     <state width="826" height="793" key="GridCell.Tab.0.bottom/0.0.1707.920/-349.-2160.2560.1400@0.0.1707.920" timestamp="1585796497331" />
-    <state width="82" height="792" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1585871122654" />
-    <state width="82" height="792" key="GridCell.Tab.0.center" timestamp="1585871122653">
+    <state width="561" height="793" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1586062098261" />
+    <state width="561" height="793" key="GridCell.Tab.0.center" timestamp="1586062098259">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="863" height="1273" key="GridCell.Tab.0.center/0.0.1707.920/-349.-2160.2560.1400@-349.-2160.2560.1400" timestamp="1585862762842" />
     <state width="826" height="793" key="GridCell.Tab.0.center/0.0.1707.920/-349.-2160.2560.1400@0.0.1707.920" timestamp="1585796497331" />
-    <state width="82" height="792" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1585871122653" />
-    <state width="82" height="792" key="GridCell.Tab.0.left" timestamp="1585871122653">
+    <state width="561" height="793" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1586062098259" />
+    <state width="561" height="793" key="GridCell.Tab.0.left" timestamp="1586062098258">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="863" height="1273" key="GridCell.Tab.0.left/0.0.1707.920/-349.-2160.2560.1400@-349.-2160.2560.1400" timestamp="1585862762841" />
     <state width="826" height="793" key="GridCell.Tab.0.left/0.0.1707.920/-349.-2160.2560.1400@0.0.1707.920" timestamp="1585796497331" />
-    <state width="82" height="792" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1585871122653" />
-    <state width="82" height="792" key="GridCell.Tab.0.right" timestamp="1585871122654">
+    <state width="561" height="793" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1586062098258" />
+    <state width="561" height="793" key="GridCell.Tab.0.right" timestamp="1586062098261">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state width="863" height="1273" key="GridCell.Tab.0.right/0.0.1707.920/-349.-2160.2560.1400@-349.-2160.2560.1400" timestamp="1585862762843" />
     <state width="826" height="793" key="GridCell.Tab.0.right/0.0.1707.920/-349.-2160.2560.1400@0.0.1707.920" timestamp="1585796497331" />
-    <state width="82" height="792" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1585871122654" />
+    <state width="561" height="793" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1586062098261" />
     <state width="1364" height="281" key="GridCell.Tab.1.bottom" timestamp="1585464420969">
       <screen x="-349" y="-2160" width="2560" height="1400" />
     </state>

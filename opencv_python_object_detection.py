@@ -51,12 +51,12 @@ while cap.isOpened():
     for contour in contours:
         (x, y, w, h) = cv2.boundingRect(contour)
 
-        if cv2.contourArea(contour) < 10:
+        if cv2.contourArea(contour) < 1500:
             continue
         cv2.rectangle(res, (x, y), (x + w, y + h), (0, 255, 0), 2)
         cv2.rectangle(frame1, (x, y), (x + w, y + h), (0, 255, 0), 2)
+        cv2.putText(res, '('+str(int(x+(w/2)))+', '+str(int(y+(h/2)))+')', (int(x+(w/2)), int(y+(h/2))), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1)
         cv2.putText(res, 'Status: {}'.format('movement'), (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
-
     cv2.imshow("frame", frame1)
     cv2.imshow("mask", mask)
     cv2.imshow("res", res)
