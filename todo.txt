@@ -1,0 +1,8 @@
+Add more stuff to the track-bar window
+    control color of shown boxes
+    control whether or not the boxes and/or positions are shown on any of the windows (ponder more later)
+Add polymorphic outline boxes/ areas of interest
+
+
+Harder Ideas:
+    Training haar cascade classifier sofware/tutorial so it's easy to implement one when I know what kind of object I wan to show
