@@ -40,6 +40,16 @@ while cap.isOpened():
     u_h = cv2.getTrackbarPos('UH', 'Tracking')
     u_s = cv2.getTrackbarPos('US', 'Tracking')
     u_v = cv2.getTrackbarPos('UV', 'Tracking')
+    if cv2.getTrackbarPos('LH', 'Tracking') - cv2.getTrackbarPos('UH', 'Tracking') >= 0:
+        cv2.setTrackbarPos('LH', 'Tracking', cv2.getTrackbarPos('UH', 'Tracking') - 1)
+        cv2.setTrackbarPos('UH', 'Tracking', cv2.getTrackbarPos('LH', 'Tracking') + 1)
+    if cv2.getTrackbarPos('LS', 'Tracking') - cv2.getTrackbarPos('US', 'Tracking') >= 0:
+        cv2.setTrackbarPos('LS', 'Tracking', cv2.getTrackbarPos('US', 'Tracking') - 1)
+        cv2.setTrackbarPos('US', 'Tracking', cv2.getTrackbarPos('LS', 'Tracking') + 1)
+    if cv2.getTrackbarPos('LV', 'Tracking') - cv2.getTrackbarPos('UV', 'Tracking') >= 0:
+        cv2.setTrackbarPos('LV', 'Tracking', cv2.getTrackbarPos('UV', 'Tracking') - 1)
+        cv2.setTrackbarPos('UV', 'Tracking', cv2.getTrackbarPos('LV', 'Tracking') + 1)
+
     onSwitch = cv2.getTrackbarPos('activate', 'Tracking')
 
     l_b = np.array([l_h, l_s, l_v])
@@ -69,16 +79,16 @@ while cap.isOpened():
     if onSwitch == 1:
         gray1 = cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
 
-        corners = cv2.goodFeaturesToTrack(gray1, 100, 0.01, 10)
-
+        corners = cv2.goodFeaturesToTrack(gray1, 100, 0.1, 10)
+        print(str(corners))
+        # cv2.goodFeaturesToTrack()
         corners = np.int0(corners)
 
         for i in corners:
             x, y = i.ravel()
             pts = np.array([[x, y]], np.int32)
             pts = pts.reshape((-1, 1, 2))
-            res = cv2.polylines(res, [pts], True, (0, 255, 255))
-
+            res = cv2.drawContours(res, pts, -1, (0, 255, 0), 3)
     cv2.imshow("frame", frame1)
     cv2.imshow("mask", mask)
     cv2.imshow("res", res)
