@@ -1,15 +1,24 @@
 import cv2
 import numpy as np
 
-
+# Not sure what this function is for
 def nothing(x):
     pass
 
-
+# Open our video capture source (camera)
 cap = cv2.VideoCapture(0);
 
+# Read frame from capture source
 ret, frame1 = cap.read()
 ret, frame2 = cap.read()
+
+
+"""
+------------------------------------------------------------
+Code below creates a GUI to tune the values
+This isn't needed since we will be hardcoding the values
+------------------------------------------------------------
+
 # tracking window will display a way to interact with values
 cv2.namedWindow("Tracking")
 # The 'L' Prefix means 'Lower' & the 'U' prefix means 'Upper' these upper and lower value limits determine in what
@@ -26,14 +35,19 @@ cv2.createTrackbar('UH', 'Tracking', 255, 255, nothing)
 cv2.createTrackbar('US', 'Tracking', 255, 255, nothing)
 cv2.createTrackbar('UV', 'Tracking', 255, 255, nothing)
 cv2.createTrackbar('activate', 'Tracking', 0, 1, nothing)
+"""
 
 while cap.isOpened():
 
     # frame = cv2.imread('smarties.png')
     # _, frame = cap.read()
 
+    # Convert frame to black and while
     hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
 
+    """
+    Read HSV and other tuning values from GUI
+    Not needed
     l_h = cv2.getTrackbarPos('LH', 'Tracking')
     l_s = cv2.getTrackbarPos('LS', 'Tracking')
     l_v = cv2.getTrackbarPos('LV', 'Tracking')
@@ -51,15 +65,19 @@ while cap.isOpened():
         cv2.setTrackbarPos('UV', 'Tracking', cv2.getTrackbarPos('LV', 'Tracking') + 1)
 
     onSwitch = cv2.getTrackbarPos('activate', 'Tracking')
+    """
 
+    # Convert image into an array so it's easier to work with
     l_b = np.array([l_h, l_s, l_v])
     u_b = np.array([u_h, u_s, u_v])
 
+    # Filter the image
     mask = cv2.inRange(hsv, l_b, u_b)
     kernel = np.ones((2, 2), np.uint8)
     opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
     res = cv2.bitwise_and(frame1, frame1, mask=opening)
 
+    # Do some more filtering
     diff = cv2.absdiff(res, frame2)
     gray = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(gray, (5, 5), 0)
@@ -76,6 +94,8 @@ while cap.isOpened():
     #     cv2.rectangle(frame1, (x, y), (x + w, y + h), (0, 255, 0), 2)
     #     cv2.putText(res, '('+str(int(x+(w/2)))+', '+str(int(y+(h/2)))+')', (int(x+(w/2)), int(y+(h/2))), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1)
     #     cv2.putText(res, 'Status: {}'.format('movement'), (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
+    """
+    I think this is more GUI stuff
     if onSwitch == 1:
         gray1 = cv2.cvtColor(res, cv2.COLOR_BGR2GRAY)
 
@@ -99,5 +119,6 @@ while cap.isOpened():
     key = cv2.waitKey(1)
     if key == 27:
         break
+    """
 cap.release()
-cv2.destroyAllWindows()
+# cv2.destroyAllWindows() Not needed
