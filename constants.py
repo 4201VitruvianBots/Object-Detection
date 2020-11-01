@@ -1,6 +1,8 @@
-#import magical mystic dragon realm of knowledge (CV)
+import cv2
+import numpy as np
+
 def camerainput ():
-    int brightness = 50
+    brightness = 50
     int contrast = 50
     int saturation = 50
     int exposure = 50
