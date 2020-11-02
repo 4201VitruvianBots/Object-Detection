@@ -1,38 +1,30 @@
 from PIL import Image, ImageDraw
 import numpy as np
 from math import sqrt
+import cv2
 # from PIL import Image, ImageGrey
-def find_circles:
-    
+
 # Return number of powercells seen by the camera
 def count_powercells():
-    # Load image:
-    input_image = Image.open("input.png")
-    input_pixels = input_image.load()
-    width, height = input_image.width, input_image.height
-
-    # Create output image
-    output_image = Image.new("RGB", input_image.size)
-    draw = ImageDraw.Draw(output_image)
-
-    # Convert to grayscale
-    intensity = np.zeros((width, height))
-    for x in range(width):
-    for y in range(height):
-        intensity[x, y] = sum(input_pixels[x, y]) / 3
-
-    # Compute convolution between intensity and kernels
-    for x in range(1, input_image.width - 1):
-        for y in range(1, input_image.height - 1):
-            magx = intensity[x + 1, y] - intensity[x - 1, y]
-            magy = intensity[x, y + 1] - intensity[x, y - 1]
-
-            # Draw in black and white the magnitude
-            color = int(sqrt(magx**2 + magy**2))
-            draw.point((x, y), (color, color, color))
     
-output_image.save("edge.png")
 
+def find_circles():
+    img = cv2.imread('edge.png',0)
+    cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
+
+    circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,5,
+                            param1=118,param2=8,minRadius=0,maxRadius=7)
+
+    circles = np.uint16(np.around(circles))
+    for i in circles[0,:]:
+        # draw the outer circle
+        cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),1)
+        # draw the center of the circle
+        cv2.circle(cimg,(i[0],i[1]),2,(0,0,255),1)
+
+        cv2.imshow('detected circles',cimg)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
 
 
     # Process
