@@ -4,7 +4,8 @@ from networktables import NetworkTables
 
 def main():
     # Setup NetworkTables
-    
+    def count
+    count = count_powercells()
     
     while count_powercells() != -1:
         # Count the powercells
