@@ -14,7 +14,7 @@ def erode ():
     size = 3
 def dilate ():
     size = 4
-def grayscale ():
+def greyscale ():
     placeholder = 0
 def FindCircles():
     resolution_divisor = 1
