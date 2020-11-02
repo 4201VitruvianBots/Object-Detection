@@ -4,12 +4,11 @@ from networktables import NetworkTables
 
 def main():
     # Setup NetworkTables
-    def count
-    count = count_powercells()
+    
     
     while count_powercells() != -1:
         # Count the powercells
-        count_powercells()
+        count = count_powercells()
 
         # Send the data through NetworkTables
         networktables_send(vision_table, count)
@@ -22,10 +21,6 @@ def networktables_setup():
     NetworkTables.initialize()
     vision_table = NetworkTables.getTable("intake-vision")
     return vision_table
-
-# Return of powercells seen by the camera
-def networktables_return():
-    return powercell
 
 
 
