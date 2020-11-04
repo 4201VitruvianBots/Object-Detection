@@ -28,4 +28,4 @@ def Prototype():
             color = int(sqrt(magx**2 + magy**2))
             draw.point((x, y), (color, color, color))
     
-output_image.save("edge.png")
+    output_image.save("edge.png")
