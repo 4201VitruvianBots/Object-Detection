@@ -1,3 +1,4 @@
+def Prototype():
 # Load image:
     input_image = Image.open("input.png")
     input_pixels = input_image.load()
