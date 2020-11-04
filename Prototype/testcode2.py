@@ -11,7 +11,7 @@ def Prototype2():
         lower_yellow = np.array([204,186,25])
         upper_yellow = np.array([255, 232, 31])
     
-        mask = cv2.inRange(hsv, lower_red, upper_red)
+        mask = cv2.inRange(hsv, lower_yellow, upper_yellow)
         res = cv2.bitwise_and(frame,frame, mask= mask)
 
         cv2.imshow('frame',frame)
@@ -22,5 +22,5 @@ def Prototype2():
         if k == 27:
             break
 
-cv2.destroyAllWindows()
-cap.release()
+    cv2.destroyAllWindows()
+    cap.release()

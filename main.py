@@ -5,8 +5,7 @@ import cv2
 # from PIL import Image, ImageGrey
 
 # Return number of powercells seen by the camera
-def count_powercells():
-    
+#def count_powercells():
     
 
 def find_circles():
@@ -35,4 +34,4 @@ def find_circles():
 
 
 # Send the number of powercells to the robot
-def networktables_send(powercell_count):
+#def networktables_send(powercell_count):
