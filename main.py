@@ -7,6 +7,7 @@ import cv2
 # Return number of powercells seen by the camera
 def count_powercells():
     
+    
 
 def find_circles():
     img = cv2.imread('edge.png',0)
