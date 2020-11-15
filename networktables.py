@@ -1,8 +1,9 @@
 from networkTables import NetworkTables
 
-# Setup NetworkTables
-NetworkTables.initialize()
-vision_table = NetworkTables.getTable("intake-vision")
+def networktables_send(vision_table, powercell_count):
+    vision_table.putNumber("powercell_count", powercell_count)
 
-# Send value through NetworkTables
-vision_table.putNumber("powercell_count", number)
+def networktables_setup():
+    NetworkTables.initialize(server="roborio-4201-frc.local")
+    vision_table = NetworkTables.getTable("intake-vision")
+    return vision_table

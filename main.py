@@ -12,11 +12,3 @@ def main():
 
         # Send the data through NetworkTables
         networktables_send(vision_table, count)
-
-def networktables_send(vision_table, powercell_count):
-    vision_table.putNumber("powercell_count", powercell_count)
-
-def networktables_setup():
-    NetworkTables.initialize()
-    vision_table = NetworkTables.getTable("intake-vision")
-    return vision_table
