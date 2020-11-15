@@ -13,18 +13,35 @@ import cv2
 
 def find_circles():
     # Change this line so the image is read by the camera
-    # img = cap.read()
-    img = cv2.imread('edge.png',0)
+    # img = cv2.imread('edge.png',0)
+    img = cap.read('edge.png',0)
 
     # The lines below should be fine
     # Make sure you have the correct filtering code though
     # Look at opencv_python_object_detection.py lines 70 - 86
-    cimg = cv2.cvtColor(img,cv2.COLOR_GRAY2BGR)
+ 
+    
+    l_b = np.array([l_h, l_s, l_v])
+    u_b = np.array([u_h, u_s, u_v])
 
-    circles = cv2.HoughCircles(img,cv2.HOUGH_GRADIENT,1,5,
-                            param1=118,param2=8,minRadius=0,maxRadius=7)
+  
+    mask = cv2.inRange(hsv, l_b, u_b)
+    kernel = np.ones((2, 2), np.uint8)
+    opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+    res = cv2.bitwise_and(frame1, frame1, mask=opening)
 
-    circles = np.uint16(np.around(circles))
+   
+    diff = cv2.absdiff(res, frame2)
+    gray = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
+    blur = cv2.GaussianBlur(gray, (5, 5), 0)
+    _, thresh = cv2.threshold(blur, 20, 255, cv2.THRESH_BINARY)
+    dilated = cv2.dilate(thresh, None, iterations=3)
+    contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+  
+
+
+
+
 
     # Lines 21 through 29 are not needed since you don't need to show the circles
     for i in circles[0,:]:
