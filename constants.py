@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+# When are these functions used?
+# Make sure that these constants are used elsewhere in the code
 def camerainput ():
     brightness = 50
     contrast = 50
