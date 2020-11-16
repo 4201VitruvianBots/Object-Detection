@@ -12,19 +12,22 @@ import cv2
     
 
 def find_circles():
-    # Change this line so the image is read by the camera
     # img = cv2.imread('edge.png',0)
+    #Opened Camera stream and added code to read the frames from the camera
+    cap = cv2.Videocapture
     img = cap.read('edge.png',0)
+    ret, frame1 = cap.read()
+    ret, frame2 = cap.read()
 
     # The lines below should be fine
     # Make sure you have the correct filtering code though
     # Look at opencv_python_object_detection.py lines 70 - 86
  
-    
+    #this converts the image into an array
     l_b = np.array([l_h, l_s, l_v])
     u_b = np.array([u_h, u_s, u_v])
 
-  
+    #The rest of the code below is filtering the image
     mask = cv2.inRange(hsv, l_b, u_b)
     kernel = np.ones((2, 2), np.uint8)
     opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
@@ -39,11 +42,6 @@ def find_circles():
     contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
   
 
-
-
-
-
-    # Lines 21 through 29 are not needed since you don't need to show the circles
     for i in circles[0,:]:
         # draw the outer circle
         cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),1)
