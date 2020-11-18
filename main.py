@@ -1,21 +1,51 @@
-from PIL import Image, ImageDraw
-import numpy as np
-from math import sqrt
+# Import OpenCV libraries
+# Import NetworkTables libraries
 import cv2
-# from PIL import Image, ImageGrey
+import numpy as np
+# Return of powercells seen by the camera
 
-# Return number of powercells seen by the camera
-#def count_powercells():
+# Not sure what this function is for
+def nothing(x):
+    pass
 
-# Open camera stream
-# Look at opencv_python_object_detection.py lines 8-13 for how to open and read a camera stream
-    
+ # Open our video capture source (camera)
+ cap = cv2.VideoCapture(0);
 
-def find_circles():
+ # Read frame from capture source
+ ret, frame1 = cap.read()
+ ret, frame2 = cap.read()
+ while cap.isOpened():
+
+  frame = cv2.imread('smarties.png')
+  _, frame = cap.read()
+
+ # Convert frame to black and while
+ hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
+ # Convert image into an array so it's easier to work with
+ l_b = np.array([l_h, l_s, l_v])
+ u_b = np.array([u_h, u_s, u_v])
+
+ # Filter the image
+ mask = cv2.inRange(hsv, l_b, u_b)
+ kernel = np.ones((2, 2), np.uint8)
+ opening = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)
+ res = cv2.bitwise_and(frame1, frame1, mask=opening)
+
+ # Do some more filtering
+ diff = cv2.absdiff(res, frame2)
+ gray = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
+ blur = cv2.GaussianBlur(gray, (5, 5), 0)
+ _, thresh = cv2.threshold(blur, 20, 255, cv2.THRESH_BINARY)
+ dilated = cv2.dilate(thresh, None, iterations=3)
+ contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+cap.release()
+# cv2.destroyAllWindows() Not needed
+def count_powercells():
     # img = cv2.imread('edge.png',0)
     #Opened Camera stream and added code to read the frames from the camera
     cap = cv2.Videocapture
-    img = cap.read('edge.png',0)
+    img = cap.read('smarties.png',0)
     ret, frame1 = cap.read()
     ret, frame2 = cap.read()
 
@@ -40,24 +70,12 @@ def find_circles():
     _, thresh = cv2.threshold(blur, 20, 255, cv2.THRESH_BINARY)
     dilated = cv2.dilate(thresh, None, iterations=3)
     contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-  
-
-    for i in circles[0,:]:
-        # draw the outer circle
-        cv2.circle(cimg,(i[0],i[1]),i[2],(0,255,0),1)
-        # draw the center of the circle
-        cv2.circle(cimg,(i[0],i[1]),2,(0,0,255),1)
-
-        cv2.imshow('detected circles',cimg)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
-
-
-    # Process
-    # 1. Grayscale image
-    # 2. Filter out HSV value of powercells
-    # 3. Count the number of circles (number of powercells)
+    return len(contours)
 
 
 # Send the number of powercells to the robot
 #def networktables_send(powercell_count):
+
+
+# Send the number of powercells to the robot
+def networktables_send(powercell_count):
