@@ -1,5 +1,8 @@
+from main.py import count_powercells
+
 def main():
-   # Test code should
-   # 1. Read image of a powercell
-   # 2. Run the image through the image recognition function
-   # 3. Print out the number of powercells detected
+   # Run the count_powercells function and get the return value
+   # Return value example (delete line below)
+   return_value_variable = function_name()
+   # Print out that return value
+   
