@@ -30,3 +30,21 @@ def count_powercells(frame1, frame2):
     dilated = cv2.dilate(thresh, None, iterations=3)
     contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     return len(contours)
+
+def powercell_countors(frame):
+    hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
+
+    # Powercell HSV values
+    lower = np.array([10, 45, 89])
+    upper = np.array([52, 218, 219])
+
+    # Threshold the HSV image to get only powercells
+    mask = cv.inRange(hsv, lower, upper)
+
+    ret, thresh = cv.threshold(mask, 127, 255, 0)
+    contours, hierarchy = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+
+    # Drawing the countors on an output image
+    # Saving the processed image file
+    # 1. Draw countours on the image (https://docs.opencv.org/master/d4/d73/tutorial_py_contours_begin.html)
+    # 2. Save the image with the countours drawn (https://www.tutorialkart.com/opencv/python/opencv-python-save-image-example/)
