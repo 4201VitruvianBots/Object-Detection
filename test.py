@@ -9,4 +9,3 @@ from main import count_powercells
 img = cv2.imread("Sheraz.png")
 powercell_count = count_powercells(img, img)
 print("Powercell count: " + str(powercell_count))
-
