@@ -47,4 +47,6 @@ def powercell_countors(frame):
     # Drawing the countors on an output image
     # Saving the processed image file
     # 1. Draw countours on the image (https://docs.opencv.org/master/d4/d73/tutorial_py_contours_begin.html)
+    cv.drawContours(img, contours, -1, (0,255,0), 3)
     # 2. Save the image with the countours drawn (https://www.tutorialkart.com/opencv/python/opencv-python-save-image-example/)
+    cv2.imwrite('/path/to/destination/image.png',image)
